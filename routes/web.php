@@ -73,3 +73,7 @@ Route::get('task/list2', function () {
     ];
     return view('task.list2')->with('tasks',$tasks);
 });
+
+/**
+ * slack test
+ */
