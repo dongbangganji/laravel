@@ -11,6 +11,9 @@
 |
 */
 
+/**
+ * 가상머신 활성화 php artisan serve
+ */
 Route::get('/', function () {
     return view('welcome');
 });
@@ -75,5 +78,16 @@ Route::get('task/list2', function () {
 });
 
 /**
- * slack test
+ * 레이아웃을 상속하는 블레이드 뷰
  */
+Route::get('task/list3', function () {
+    $tasks = [
+        ['name' => 'Response1-1 클래스 분석' , 'due_date' => '2015-06' ],
+        ['name' => 'Response2-2 클래스 분석' , 'due_date' => '2015-07' ],
+        ['name' => 'Response3-3 클래스 분석' , 'due_date' => '2015-08' ],
+    ];
+    return view('task.list3')->with('tasks',$tasks);
+});
+
+
+
