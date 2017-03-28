@@ -80,14 +80,26 @@ Route::get('task/list2', function () {
 /**
  * 레이아웃을 상속하는 블레이드 뷰
  */
-Route::get('task/list3', function () {
-    $tasks = [
-        ['name' => 'Response1-1 클래스 분석' , 'due_date' => '2015-06' ],
-        ['name' => 'Response2-2 클래스 분석' , 'due_date' => '2015-07' ],
-        ['name' => 'Response3-3 클래스 분석' , 'due_date' => '2015-08' ],
-    ];
-    return view('task.list3')->with('tasks',$tasks);
+Route::get('task/list3', 'TaskController@list3' );
+
+/**
+ * 라우터에서 Artisan
+ */
+Route::get('model/{name}', function ($name) {
+    return Artisan::call('make:model', ['name' => $name]);
 });
 
+/**
+ * 컨트롤러 매개변수
+ * ex : http://localhost:8000/task/param/3/arg?name=11
+ */
+
+Route::get('task/param/{id?}/{arg?}', 'TaskController@param' );
+
+Route::post('task', 'TaskController@addTask' );
+
+Route::put('task', 'TaskController@updateTask' );
+
+Route::delete('task', 'TaskController@deleteTask' );
 
 
