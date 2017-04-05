@@ -95,11 +95,24 @@ Route::get('model/{name}', function ($name) {
  */
 
 Route::get('task/param/{id?}/{arg?}', 'TaskController@param' );
-
 Route::post('task', 'TaskController@addTask' );
 
+/**
+ * any =  get + psot 둘다 허용 하겠다
+ */
+Route::any('/task', 'TaskController@deleteTask' );
+Route::match(['get','post'],'/task', 'TaskController@deleteTask' );
 Route::put('task', 'TaskController@updateTask' );
-
 Route::delete('task', 'TaskController@deleteTask' );
+Route::get('admin/create', 'Amind/Register@create' );
 
+/**
+ * 라우팅에 이름 부여
+ */
+Route::post('task/add',['as' => 'task.add', 'uses' => 'TaskController@add']);
 
+/**
+ * 라우트 그룹
+ */
+
+Route:group(['prefix' => 'task', 'as' => ])
