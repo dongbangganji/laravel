@@ -37,7 +37,8 @@ Route::get('hello/html', function () {
  * with()를 이용해 뷰에 데이터 전달
  */
 Route::get('task/view', function () {
-    $task = ['name' => 'Task 1', 'due_date' => '2015-06-01 12:00:11'];
+    $task = [  'name' => 'Task 1'
+             , 'due_date' => '2015-06-01 12:00:11' ];
     return view('task.view')->with('task',$task);
 });
 
@@ -91,7 +92,7 @@ Route::get('model/{name}', function ($name) {
 
 /**
  * 컨트롤러 매개변수
- * ex : http://localhost:8000/task/param/3/arg?name=11
+ * ex : http://13.124.88.105/task/param/3/arg?name=11
  */
 
 Route::get('task/param/{id?}/{arg?}', 'TaskController@param' );
@@ -112,7 +113,13 @@ Route::get('admin/create', 'Amind/Register@create' );
 Route::post('task/add',['as' => 'task.add', 'uses' => 'TaskController@add']);
 
 /**
- * 라우트 그룹
+ * Property 이용
  */
 
-//Route:group(['prefix' => 'task', 'as' => ])
+Route::get('/task/Property', function () {
+    $view = view('index');
+    $view->gree_ting = "Hey~ What's up";
+    $view->name = 'everyone';
+
+    return $view;
+});
