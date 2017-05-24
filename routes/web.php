@@ -123,7 +123,3 @@ Route::get('/task/Property', function () {
 
     return $view;
 });
-
-/**
- * branch_01 작업 1 부분 입니다
- */
